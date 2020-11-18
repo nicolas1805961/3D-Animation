@@ -61,8 +61,8 @@ void scene_model::compute_time_step(float dt)
                 float d = particle1.r + particle2.r - norm(particle1.p - particle2.p);
                 particle1.p = particle1.p + (d / 2) * u1;
                 particle2.p = particle2.p + (d / 2) * u2;
-                particle1.v = 0.5 * particle1.v - 0.5 * ((dot(particle1.v - particle2.v, u1) * u1));
-                particle2.v = 0.5 * particle2.v - 0.5 * ((dot(particle2.v - particle1.v, u2) * u2));
+                particle1.v = 0.6 * particle1.v - 0.6 * ((dot(particle1.v - particle2.v, u1) * u1));
+                particle2.v = 0.6 * particle2.v - 0.6 * ((dot(particle2.v - particle1.v, u2) * u2));
             }
         }
     }
@@ -103,14 +103,14 @@ void scene_model::compute_time_step(float dt)
             particle.p = particle.p + d * normal;
             vec3 v_parallel = particle.v - dot(particle.v, normal) * normal;
             vec3 v_orthogonal = dot(particle.v, normal) * normal;
-            particle.v = 0.5 * v_parallel - 0.5 * v_orthogonal;
+            particle.v = 0.6 * v_parallel - 0.6 * v_orthogonal;
         }
         if (distance_up <= particle.r)
         {
             vec3 normal = vec3(0, -1, 0);
             vec3 v_parallel = particle.v - dot(particle.v, normal) * normal;
             vec3 v_orthogonal = dot(particle.v, normal) * normal;
-            particle.v = 0.5 * v_parallel - 0.5 * v_orthogonal;
+            particle.v = 0.6 * v_parallel - 0.6 * v_orthogonal;
             float d = particle.r - distance_up;
             particle.p = particle.p + d * normal;
         }
@@ -119,7 +119,7 @@ void scene_model::compute_time_step(float dt)
             vec3 normal = vec3(1, 0, 0);
             vec3 v_parallel = particle.v - dot(particle.v, normal) * normal;
             vec3 v_orthogonal = dot(particle.v, normal) * normal;
-            particle.v = 0.5 * v_parallel - 0.5 * v_orthogonal;
+            particle.v = 0.6 * v_parallel - 0.6 * v_orthogonal;
             float d = particle.r - distance_left;
             particle.p = particle.p + d * normal;
         }
@@ -128,7 +128,7 @@ void scene_model::compute_time_step(float dt)
             vec3 normal = vec3(-1, 0, 0);
             vec3 v_parallel = particle.v - dot(particle.v, normal) * normal;
             vec3 v_orthogonal = dot(particle.v, normal) * normal;
-            particle.v = 0.5 * v_parallel - 0.5 * v_orthogonal;
+            particle.v = 0.6 * v_parallel - 0.6 * v_orthogonal;
             float d = particle.r - distance_right;
             particle.p = particle.p + d * normal;
         }
@@ -137,7 +137,7 @@ void scene_model::compute_time_step(float dt)
             vec3 normal = vec3(0, 0, 1);
             vec3 v_parallel = particle.v - dot(particle.v, normal) * normal;
             vec3 v_orthogonal = dot(particle.v, normal) * normal;
-            particle.v = 0.5 * v_parallel - 0.5 * v_orthogonal;
+            particle.v = 0.6 * v_parallel - 0.6 * v_orthogonal;
             float d = particle.r - distance_back;
             particle.p = particle.p + d * normal;
         }
@@ -146,7 +146,7 @@ void scene_model::compute_time_step(float dt)
             vec3 normal = vec3(0, 0, -1);
             vec3 v_parallel = particle.v - dot(particle.v, normal) * normal;
             vec3 v_orthogonal = dot(particle.v, normal) * normal;
-            particle.v = 0.5 * v_parallel - 0.5 * v_orthogonal;
+            particle.v = 0.6 * v_parallel - 0.6 * v_orthogonal;
             float d = particle.r - distance_front;
             particle.p = particle.p + d * normal;
         }
